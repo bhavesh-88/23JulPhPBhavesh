@@ -1,0 +1,245 @@
+Enter password: ************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 23bhavesh          |
+| 23july             |
+| 34bhavesh          |
+| 6july              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+8 rows in set (0.06 sec)
+
+mysql> use database 6july;
+ERROR 1049 (42000): Unknown database 'database'
+mysql> use databases 6july
+ERROR 1049 (42000): Unknown database 'databases'
+mysql> use databases 6july;
+ERROR 1049 (42000): Unknown database 'databases'
+mysql> use 6july;
+Database changed
+mysql> create databse mydada;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'datab
+se mydada' at line 1
+mysql> create database mudata;
+Query OK, 1 row affected (0.38 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 23bhavesh          |
+| 23july             |
+| 34bhavesh          |
+| 6july              |
+| information_schema |
+| mudata             |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> drop database 34bhavesh;
+Query OK, 0 rows affected (0.18 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 23bhavesh          |
+| 23july             |
+| 6july              |
+| information_schema |
+| mudata             |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+8 rows in set (0.01 sec)
+
+mysql> use mydata;
+ERROR 1049 (42000): Unknown database 'mydata'
+mysql> drop database mudata;
+Query OK, 0 rows affected (0.28 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 23bhavesh          |
+| 23july             |
+| 6july              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use 6july;
+Database changed
+mysql> create table student(id int,name varchar(50),DOB date);
+Query OK, 0 rows affected (0.87 sec)
+
+mysql> DESC student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(50) | YES  |     | NULL    |       |
+| DOB   | date        | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into student values(12,"abc",2022/11/8);;
+ERROR 1292 (22007): Incorrect date value: '22.977272727250000000' for column 'DO
+B' at row 1
+ERROR:
+No query specified
+
+mysql> insert into student values(12,"abc",2022/11/8);
+ERROR 1292 (22007): Incorrect date value: '22.977272727250000000' for column 'DO
+B' at row 1
+mysql> insert into student values(12,"abc",2022/01/8);
+ERROR 1292 (22007): Incorrect date value: '252.750000000000000000' for column 'D
+OB' at row 1
+mysql> insert into student values(12,"abc",'2022/11/8');
+Query OK, 1 row affected, 1 warning (0.08 sec)
+
+mysql> select *from student;
++------+------+------------+
+| id   | name | DOB        |
++------+------+------------+
+|   12 | abc  | 2022-11-08 |
++------+------+------------+
+1 row in set (0.00 sec)
+
+mysql> insert into student values(12,"bhjh",'2022/11/8');
+Query OK, 1 row affected, 1 warning (0.36 sec)
+
+mysql> select *from student;
++------+------+------------+
+| id   | name | DOB        |
++------+------+------------+
+|   12 | abc  | 2022-11-08 |
+|   12 | bhjh | 2022-11-08 |
++------+------+------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into student values(12,"bhjh",);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near ')' at
+ line 1
+mysql> insert into student values(12,"bhjh");
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into student values(12,"bhjh",'2022/10/8');
+Query OK, 1 row affected, 1 warning (0.06 sec)
+
+mysql> select *from student;
++------+------+------------+
+| id   | name | DOB        |
++------+------+------------+
+|   12 | abc  | 2022-11-08 |
+|   12 | bhjh | 2022-11-08 |
+|   12 | bhjh | 2022-10-08 |
++------+------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select from name student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'from
+name student' at line 1
+mysql> select  from name student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version for the right syntax to use near 'from
+name student' at line 1
+mysql> select name from student;
++------+
+| name |
++------+
+| abc  |
+| bhjh |
+| bhjh |
++------+
+3 rows in set (0.00 sec)
+
+mysql> select name from student where id=12;
++------+
+| name |
++------+
+| abc  |
+| bhjh |
+| bhjh |
++------+
+3 rows in set (0.00 sec)
+
+mysql> update student set id=21 where name="abc";
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from student;
++------+------+------------+
+| id   | name | DOB        |
++------+------+------------+
+|   21 | abc  | 2022-11-08 |
+|   12 | bhjh | 2022-11-08 |
+|   12 | bhjh | 2022-10-08 |
++------+------+------------+
+3 rows in set (0.00 sec)
+
+mysql> update student set name="bhavesh" where id=12;
+Query OK, 2 rows affected (0.06 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select *from student;
++------+---------+------------+
+| id   | name    | DOB        |
++------+---------+------------+
+|   21 | abc     | 2022-11-08 |
+|   12 | bhavesh | 2022-11-08 |
+|   12 | bhavesh | 2022-10-08 |
++------+---------+------------+
+3 rows in set (0.00 sec)
+
+mysql> delete from student where id=21;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select *from student;
++------+---------+------------+
+| id   | name    | DOB        |
++------+---------+------------+
+|   12 | bhavesh | 2022-11-08 |
+|   12 | bhavesh | 2022-10-08 |
++------+---------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select name from student;
++---------+
+| name    |
++---------+
+| bhavesh |
+| bhavesh |
++---------+
+2 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql>
