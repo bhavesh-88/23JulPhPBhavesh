@@ -1,0 +1,92 @@
+<!Doctype>
+<html>
+ <head>
+   <title>
+   HTML FORMS
+   </title>
+ </head>
+<body>
+     <center>
+	          <h1>Gujarat sports Club Registration</h1>
+			  
+	   <table>
+	     <form method="post" section="file:///B:/HTML/form.html">
+		     <tr>
+		     <td><label>Firstname <span style="color :red">*</span>:</label></td>
+			 <td><input type="text" name="fname" required></td>
+             </tr>
+			 
+			 <tr>
+		     <td><label>Lasttname <span style="color :red">*</span>:</label></td>
+			 <td><input type="text" name="lname" required></td>
+		     </tr>
+			 
+			 <tr>
+			 <td><label>email <span style="color :red">*</span>:</label></td>
+			 <td><input type="email" name="email"></td>
+			 </tr>
+			 
+			 <tr>
+			 <td><label>password :</label></td>
+			 <td><input type="password" name="pasw"></td>
+			 </tr>
+			 
+			 <tr>
+			 <td><label>Contact :</label></td>
+			 <td><input type="text" name="contact"></td>
+			 </tr>
+			 
+			 <tr>
+			  <td><label>address :</label></td>
+			 <td><textarea rows="5px" cols="12px"></textarea></td>
+			 </tr>
+			 
+			 <tr>
+			 <td><label>State :</label></td>
+			 <td><select>
+			       <option>----select your state-----</option>
+				   <option>Rajasthan</option>
+				   <option>Dehli</option>
+				   <option>Haryana</option>
+				   <option>Punjab</option>
+				   <option>Mp</option>
+			 </select></td>
+			 </tr>
+			 
+			 <tr>
+		    <td><label>DoB :</label></td>
+			<td><input type="data" name="date"></td>
+		     </tr>
+		    
+			<tr>
+		   <td><label>Age :</label></td>
+			<td><input type="number" name="age"></td>
+			</tr>
+			 
+			 <tr>
+			<td><label>Gender :</label></td>
+			 <td><input type="radio" name="Gender">Male
+			 <input type="radio" name="Gender">Female</td>
+			 </tr>
+			 
+			 <tr>
+			 <td><label>favorite game :</label></td>
+			 <td><input type="checkbox" name="game">Football<br>
+			 <input type="checkbox" name="game">Cricket<br>
+			 <input type="checkbox" name="game">Tennis<br>
+			 <input type="checkbox" name="game">Basketball<br>
+			 <input type="checkbox" name="game">Kabbadi</td><br>
+			 </tr>
+			 
+			 <tr>
+			 <td><input type="submit" value="submit" ></td>
+			 <td><input type="reset" value="reset" ></td>
+			 </tr>
+			 
+		 </form>
+		 </table>
+		 <p> Note :<span style="color :red">*</span> indicate madatory fields</p>
+	 </center>
+</body>
+
+</html>
